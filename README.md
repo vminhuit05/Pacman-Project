@@ -20,6 +20,7 @@
 ### Ví dụ
 
 * Tính năng vô hiệu hóa ghost - được khởi động khi người chơi ăn được mục tiêu lớn.
+## Read Docstring file for more infomation about the code
 
 ## Liên hệ
 
