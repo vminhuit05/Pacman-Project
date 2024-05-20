@@ -15,7 +15,7 @@
 **Sử dụng các nút di chuyển lên xuống để điều khiển nhân vật chơi**
 ### Yêu cầu
 
-*Yêu cầu thiết bị : có trình biên dịch ngôn ngữ python.
+* Yêu cầu thiết bị : có trình biên dịch ngôn ngữ python.
 
 ### Ví dụ
 
