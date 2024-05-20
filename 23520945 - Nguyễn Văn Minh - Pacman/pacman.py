@@ -1,11 +1,13 @@
-# import thu vien
+# import lib
 import copy
 from board import boards
 import pygame
 import math
 
 pygame.init()
-# ve man hinh choi 
+pygame.display.set_caption('Pacman')
+
+"""Draw the screeen of game"""
 WIDTH = 900
 HEIGHT = 950
 screen = pygame.display.set_mode([WIDTH, HEIGHT])
@@ -17,7 +19,7 @@ color = 'green'
 PI = math.pi
 player_images = []
 
-# tao hinh nhan vat
+"""create the apperance of player"""
 
 for i in range(1, 5):
     player_images.append(pygame.transform.scale(pygame.image.load(f'assets/player_images/{i}.png'), (45, 45)))
@@ -76,6 +78,19 @@ game_won = False
 # tao ghost
 class Ghost:
     def __init__(self, x_coord, y_coord, target, speed, img, direct, dead, box, id):
+        """set the defaut values
+
+        Args:
+            x_coord (int): z position
+            y_coord (int): y position
+            target (int): target
+            speed (int): speed 
+            img (image): appearance 
+            direct (int): direct
+            dead (bool): dead or alive 
+            box (bool): check for in or out box
+            id (int): id of ghost
+        """
         self.x_pos = x_coord
         self.y_pos = y_coord
         self.center_x = self.x_pos + 22
@@ -91,6 +106,11 @@ class Ghost:
         self.rect = self.draw()
 
     def draw(self):
+        """create appearance of player or ghosst
+
+        Returns:
+            seft: a packages of unit
+        """
         if (not powerup and not self.dead) or (eaten_ghost[self.id] and powerup and not self.dead):
             screen.blit(self.img, (self.x_pos, self.y_pos))
         elif powerup and not self.dead and not eaten_ghost[self.id]:
@@ -101,6 +121,11 @@ class Ghost:
         return ghost_rect
 
     def check_collisions(self):
+        """check the collision between ghosts and player
+
+        Returns:
+            seft: seft
+        """
         # R, L, U, D
         num1 = ((HEIGHT - 50) // 32)
         num2 = (WIDTH // 30)
@@ -176,6 +201,11 @@ class Ghost:
 # ghost di chuyen
     
     def move_ghost1(self):
+        """func for move ghost1
+
+        Returns:
+            way to move ghost
+        """
         # r, l, u, d
         if self.direction == 0:
             if self.target[0] > self.x_pos and self.turns[0]:
@@ -666,6 +696,9 @@ class Ghost:
 # man hinh luc ket thuc game
 
 def draw_misc():
+    """ darw the final screen after finish the game 
+        you dead or win game 
+    """
     score_text = font.render(f'Score: {score}', True, 'white')
     screen.blit(score_text, (10, 920))
     if powerup:
@@ -703,6 +736,8 @@ def check_collisions(scor, power, power_count, eaten_ghosts):
 # ve map
 
 def draw_board():
+    """draw board game using the board.py to set the positon of pieces of game screeen
+    """
     num1 = ((HEIGHT - 50) // 32)
     num2 = (WIDTH // 30)
     for i in range(len(level)):
@@ -736,6 +771,7 @@ def draw_board():
 
 
 def draw_player():
+    """ func to draw player"""
     # 0-RIGHT, 1-LEFT, 2-UP, 3-DOWN
     
     if direction == 0:
@@ -798,6 +834,15 @@ def check_position(centerx, centery):
 
 # di chuyen nhan vat
 def move_player(play_x, play_y):
+    """for player move 
+
+    Args:
+        play_x (int): x position
+        play_y (int): y position
+
+    Returns:
+       position
+    """
     # r, l, u, d
     if direction == 0 and turns_allowed[0]:
         play_x += player_speed
@@ -812,6 +857,19 @@ def move_player(play_x, play_y):
 # score
 
 def get_targets(ghost1_x, ghost1_y, ghost2_x, ghost2_y, ghost3_x, ghost3_y, ghost4_x, ghost4_y):
+    """target of player
+
+    Args:
+        ghost1_x (int): position
+        ghost1_y (int): position
+        ghost2_x (int): position
+        ghost2_y (int): position
+        ghost3_x (int): position
+        ghost3_y (int): position
+        ghost4_x (int): position
+        ghost4_y (int): position
+
+    """
     if player_x < 450:
         runaway_x = 900
     else:
