@@ -10,7 +10,7 @@
 * Sau khi kết thúc trò chơi người chơi được xem điểm số mình đạt được.
 ## Cài đặt
 
-**CLone repository về máy**
+**Clone repository về máy**
 **Thực thi file pacman.py để khởi động trò chơi**
 **Sử dụng các nút di chuyển lên xuống để điều khiển nhân vật chơi**
 ### Yêu cầu
