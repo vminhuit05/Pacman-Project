@@ -1,4 +1,4 @@
-# import lib
+"""import lib"""
 import copy
 from board import boards
 import pygame
